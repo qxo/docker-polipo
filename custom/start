@@ -1,0 +1,9 @@
+#!/bin/sh
+echo "starting polipo..."
+if [ -n "$socksParentProxy" ] ; then
+ sed -i '/^\(socksParentProxy\|socksProxyType\)/d' /etc/polipo/config
+ echo "socksParentProxy = \"$socksParentProxy\"" >> /etc/polipo/config
+ echo "socksProxyType = socks5 "  >> /etc/polipo/config
+fi
+
+polipo 
